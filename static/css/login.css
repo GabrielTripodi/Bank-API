@@ -1,0 +1,33 @@
+.form-login {
+  max-width: 380px;
+}
+
+.form-login .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.was-validated .form-control:valid {
+  border-color: inherit !important;
+  padding-right: inherit !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+#invalid-username {
+  margin-bottom: 10px;
+}
+
+#login-btn {
+  margin-top: 10px;
+}

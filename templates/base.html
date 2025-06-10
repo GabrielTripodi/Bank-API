@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo-white.png') }}">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <div id="header">
+        <header class="p-3 text-bg-primary">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="{{ url_for('home') }}"
+                        class="d-flex align-items-center text-white fw-bold text-decoration-none">
+                        <img src="{{ url_for('static', filename='images/logo-white.png') }}"
+                            style="width: 32px; height: 32px;" class="me-3" alt="logo" />
+                        IBAN Admin Manager
+                    </a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ms-lg-4 my-2 my-lg-0">
+                        <li><a href="{{ url_for('home') }}" class="nav-link px-3 text-white">Home</a></li>
+                        <li><a href="{{ url_for('add_iban_page') }}" class="nav-link px-3 text-white">Add IBAN</a></li>
+                        <li><a href="{{ url_for('modify_iban_page') }}" class="nav-link px-3 text-white">Modify IBAN</a></li>
+                        <li><a href="{{ url_for('remove_iban_page') }}" class="nav-link px-3 text-white">Remove IBAN</a></li>
+                    </ul>
+                    {% if 'admin_id' in session %}
+                    <div class="text-end mt-2 mt-lg-0">
+                        <button type="button" class="btn btn-outline-light me-2" id="goto-logout">Logout</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+    </div>
+    {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/sweetalert2.all.min.js') }}"></script>
+    {% if 'admin_id' in session %}
+    <script>
+        document.getElementById("goto-logout").addEventListener("click", function () {
+            location.href = "{{ url_for('logout') }}";
+        });
+    </script>
+    {% endif %}
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

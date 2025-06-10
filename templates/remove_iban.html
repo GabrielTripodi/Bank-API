@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Remove IBAN{% endblock %}
+
+{% block content %}
+<div class="container container-max-700 p-4 rounded-4 shadow-lg border my-5">
+    <h1 class="h3 mb-4 fw-bold text-center">Remove IBAN</h1>
+    <div class="mb-3">
+        <label for="name" class="form-label fw-medium">Person or Company Name</label>
+        <input type="text" id="name" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
+        <label for="surname" class="form-label fw-medium">Surname</label>
+        <input type="text" id="surname" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
+        <label for="iban" class="form-label fw-medium">IBAN</label>
+        <input type="text" id="iban" class="form-control" disabled>
+    </div>
+    <button class="btn btn-danger w-100 mt-3" type="button" id="remove-btn">Remove IBAN</button>
+    <button class="btn btn-outline-secondary w-100 mt-3" type="button" id="change-btn">Choose IBAN to remove</button>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module" src="{{ url_for('static', filename='js/remove-iban.js') }}"></script>
+{% endblock %}

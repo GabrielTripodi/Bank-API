@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-5 shadow-lg border overflow-hidden">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis text-center">
+                Welcome to the</br>IBAN Management Panel
+            </h1>
+            <p class="lead mt-4">
+                This interface is reserved for authorized administrators.
+                It allows you to manage the IBANs and their respective holders registered in the system.</br>
+                All operations are performed securely and are fully logged.
+            </p>
+            <p class="lead">
+                Please select the operation you wish to perform from the options below.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+                <button type="button" class="btn btn-outline-success btn-lg px-4 me-md-2 fw-bold" id="goto-new-iban">Add new IBAN</button>
+                <button type="button" class="btn btn-outline-primary btn-lg px-4" id="goto-modify-iban">Modify existing IBAN</button>
+                <button type="button" class="btn btn-outline-danger btn-lg px-4" id="goto-remove-iban">Remove an IBAN</button>
+            </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img class="rounded-lg-3" src="{{ url_for('static', filename='images/home.png') }}" alt="" width="480" />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById("goto-new-iban").addEventListener("click", function () {
+        location.href = "{{ url_for('add_iban_page') }}";
+    });
+    document.getElementById("goto-modify-iban").addEventListener("click", function () {
+        location.href = "{{ url_for('modify_iban_page') }}";
+    });
+    document.getElementById("goto-remove-iban").addEventListener("click", function () {
+        location.href = "{{ url_for('remove_iban_page') }}";
+    });
+</script>
+{% endblock %}
