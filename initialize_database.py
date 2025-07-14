@@ -41,7 +41,7 @@ def generate_random_timestamp():
 def create_tables(cursor):
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS iban_holders (id CHAR(36) PRIMARY KEY, iban CHAR(27) UNIQUE NOT NULL, first_name VARCHAR(40), last_name "
-        "VARCHAR(40), company_name VARCHAR(80), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP)")
+        "VARCHAR(50), company_name VARCHAR(80), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP)")
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS administrators (id CHAR(36) PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, "
         "password CHAR(60) NOT NULL)")
